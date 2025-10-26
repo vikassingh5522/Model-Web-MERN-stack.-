@@ -1,0 +1,56 @@
+
+Why the  js is important =>  kyuki website pe animations 
+                         =>  langhbhag har prakaar prakaar ka koi engagement create kerne k lyai js use hoti hai
+        
+what can it do for you  ? => engagement , interactions , animations , validations
+
+Script tag use karke attach karna karna hai js mai
+
+js ko browser mein run karna
+
+
+1} var → old version (function scoped) 
+2} let → introduced in ES6 (block scoped)
+3} Const → introduced in ES6 (block scoped and cannot be reassigned)
+4} console , prompt alert 
+5} strings kay hoti hai 
+6} slice template-strings ( template literal  ` ` ) split  replace  includes 
+7} statements expressions 
+
+
+// =================================================================
+// Console Methods in JavaScript
+1} console.log() → Used to print general information
+2} console.info() → Used to print informational messages (same as log, but semantically used for info)
+3} console.warn() → Used to show warning messages (appears in yellow in most browsers)
+4} console.error() → Used to show error messages (appears in red in most browsers)
+5} console.table() → Displays data in a table format (works best with arrays or objects)
+
+✅ Output Explanation:
+console.log → prints normal text
+console.info → prints info text
+console.warn → shows a warning (yellow)
+console.error → shows an error (red)
+
+
+// =================================================================
+//  prompt() and alert() in JavaScript
+// =================================================================
+
+1} prompt() → used to take input from the user in a popup box
+2} alert() → used to show a message to the user in a popup box
+Note:🔥
+3} Both double quotes (" ") and single quotes (' ') can be used for strings in JavaScript
+   " " and ' ' → both define strings
+
+
+// =================================================================
+// String Methods and Template Literals in JavaScript
+// =================================================================
+
+1} let str = "Hello JavaScript World!";
+2} slice() → extracts part of a string
+3} Template Literals (backticks ` `) used for embedding variables and expressions easily
+4} split() → splits string into an array based on a separator
+5} replace() → replaces a part of the string
+6} includes() → checks if string contains a certain substring
