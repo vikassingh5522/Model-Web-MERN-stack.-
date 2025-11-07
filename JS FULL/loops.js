@@ -261,6 +261,23 @@ for (let i = 0; i <=5; i++) {
 
 //  -------------------------------------------------------------------------------------------
 
-// ATM Simulator – Allow 3 withdrawals Start with ₹1000 balance. Ask withdrawal amount 3 times.If enough balance → deduct Else → print “Insufficient balance”
+// 19} ATM Simulator – Allow 3 withdrawals Start with ₹1000 balance. Ask withdrawal amount 3 times.If enough balance → deduct Else → print “Insufficient balance”
 
+let balance =1000;
+let flag = false;
+let count =0;
 
+while (balance > 0 && count !==3 ) {
+    let withdrawal = +prompt(" How many money withdraw ?");
+    count++;
+    if (withdrawal <= balance) {
+        balance -=withdrawal;
+    } else {
+        flag =true
+        break;
+    }
+}
+if (flag === true) {
+console.log("Insufficient balances");
+}
+console.log(`Balance : ${balance}`);
