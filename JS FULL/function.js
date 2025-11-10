@@ -137,7 +137,7 @@
 //   this i nhi hota hai vo prent se leta hai
 
 // 3} Higher Order --> ek  aisa function jo ki return kar re functon 
-  
+
 //    function a() {
 //         return function b() {
 //         }
@@ -153,7 +153,7 @@
 
 
 //4} Callback
-    
+
 // function a(A) {
 //   }
 //    a(function b() {
@@ -167,18 +167,40 @@
 
 //   pure function --> ek aisa function --> same nput  = same output  --> kai sde effect nahi hoga
 
-    let a=21;
-    function abc(val) {
-         console.log(val+2);
-    }
-    abc(12);
+// let a = 21;
+// function abc(val) {
+//     console.log(val + 2);
+// }
+// abc(12);
+// abc(12);
+// abc(12);
 
-   
+// Impure Function  ---> ek aiisa function --> sme i/p  = diff diff o/p that is call IMpure function
+  
+//  let  a =12;
+// function abc(val) {
+//     console.log(Math.random() + val);
+// }
+// abc(12);
+// abc(12);
+
+ 
 
 // ------------------------------------------------------------------------------------
 
 //  - Understanding Scoping in JS - ['Global scope 'Function scope']
+   
+
 
 
 // -----------------------------------------------------------------------------------
 // 11 - Understanding 'Closures', 'Scoping Rule
+//   Closures --> ek function hi jo return karta hai functions  but retuning functiion jo ka  kai variable use karega
+ 
+//  function abc() {
+//     let a=12;
+//     return function () {
+//         console.log(a);
+//     }
+//  }
+//  abc();
