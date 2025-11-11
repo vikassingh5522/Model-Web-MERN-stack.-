@@ -277,3 +277,162 @@ for (let key in person) {
 setTimeout(() => {
     console.log("Time up!");
 }, 2000);
+
+
+// 🟡 Level 2 – Functional Thinking & Logic Tasks (Intermediate)
+
+// 1. Write a higher-order function `runTwice(fn)` that 
+// takes another function and executes it two times
+
+function runTwice(a) {
+    a();
+    a();
+}
+function sayHello() {
+    console.log("Hello vikas");
+}
+runTwice(sayHello);
+
+
+//2. Create one pure function that always returns the
+// same output for a given input, and one impure function using a global variable
+
+let a=12
+ function pure(val) {
+    console.log(val+1);
+ }
+ pure(12)
+  pure(12)
+
+// OR
+
+let b = 8;
+function pure1(val) {
+    return val;
+}
+console.log(pure1(12));
+console.log(pure1(12));
+
+
+// 3} Write a function that uses object destructuring
+// inside parameters to extract and print `name` and`age`
+
+ function user({name , age , city}) {
+    console.log(`name : ${name} , age  : ${age} ,city : ${city}`)
+ }
+ user({
+    name:"vikas",
+    age:14,
+    city:"Pune",
+ });
+
+// 4} Demonstrate the difference between normal
+// function and arrow function when used as object  methods (the `this` issue).
+
+// 1} Normal Function Method
+
+const person1 = {
+    name: "vikas",
+    age: "28",
+    showInfo: function a() {
+        console.log("Nowmal function :", this.name, this.age,);
+    },
+};
+person1.showInfo();
+
+// 2} Arrow Function Method
+
+ const person2 = {
+  name: "Vikas",
+  age: 22,
+  showInfo: () => {
+    console.log("Arrow Function ->", this.name, this.age);
+  },
+};
+person2.showInfo(); // ⚠️ Output: Arrow Function -> undefined undefined
+// Arrow functions 👍 don’t have their own (this).
+// this inside the arrow function refers to the outer scope (like the global window object in browsers).
+// Since window.name and window.age are not defined, the result is undefined.
+
+
+// 3 Mixed Example
+const person4 = {
+  name: "Vikas",
+  normalFn: function () {
+    console.log("Normal:", this.name);
+  },
+  arrowFn: () => {
+    console.log("Arrow:", this.name);
+  },
+};
+person4.normalFn(); // ✅ Normal: Vikas
+person4.arrowFn();  // ⚠️ Arrow: undefined
+
+
+// 5. Given an array of numbers, use `map()` to create a
+// new array where each number is squared.
+
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+let squared = arr.map(v => v * v);
+console.log(squared);
+
+// or 
+
+let squ = arr.map(function (num) {
+    return num * num;
+})
+console.log(squ);
+
+
+
+// 6. Use `filter()` to get only even numbers from an array.
+
+let numbers = [1, 23, 4, 6, 7, 8, 10];
+let even = numbers.filter(num => num % 2 === 0);
+console.log(even);
+
+// 7. Use `reduce()` to find the total salary from an array of numbers `[1000, 2000, 3000]`.
+
+let salary = [1000, 2000, 3000];
+let total = salary.reduce(function (acc, val) {
+    return acc + val;  // add current value to accumulator
+}, 0);
+console.log("Total Salary:", total);
+
+
+// 8. Create an array of names and use `some()` and
+
+let names = ["Vikas", "Raj", "Anu", "Rohan"];
+
+let allLong = names.every(function (name) {
+    return name.length > 3;
+});
+
+let someLong = names.some(function (name) {
+    return name.length > 3;
+});
+
+console.log("All names > 3 chars:", allLong);
+console.log("Some names > 3 chars:", someLong);
+
+// or
+
+// let names = ["Vikas", "Raj", "Anu", "Rohan"];
+
+// let allLong = names.every(name => name.length > 3);
+// let someLong = names.some(name => name.length > 3);
+
+// console.log("All names > 3 chars:", allLong);
+// console.log("Some names > 3 chars:", someLong);
+
+
+
+// `every()` to test a condition (e.g., all names longer than 3 chars).
+
+// 9. Create an object `user` and test the behavior of 
+// `Object.freeze()` and `Object.seal()` by adding/changing keys.
+
+
+// 10. Create a nested object (`user → address → city`) 
+// and access the city name inside it.
