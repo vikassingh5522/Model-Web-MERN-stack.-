@@ -20,7 +20,6 @@ console.log(a); // ✅ Works fine → Output: 10
 // Explanation: 'b' exists only inside the curly braces.
 
 
-
 // Example using 'const'
 {
     const c = 30; // 'const' is block-scoped and cannot be reassigned
@@ -80,8 +79,6 @@ console.log(str.includes("JavaScript"));       // ✅ true → checks if word ex
 console.log(str.toUpperCase());   // ✅ Converts to uppercase
 console.log(str.toLowerCase());   // ✅ Converts to lowercase
 
-
-
 // ================================================================
 // 5️⃣ TEMPLATE LITERALS (BACKTICKS ` `)
 // ================================================================
@@ -99,10 +96,7 @@ console.log(`2 + 3 = ${2 + 3}`); // ✅ You can directly use expressions inside 
 console.log(`Next year I will be ${age + 1} years old.`);
 
 // You can also create multi-line strings easily
-let intro = `
-Hello everyone,
-My name is ${name}.
-I love JavaScript and coding!
+let intro = `Hello everyone,My name is ${name}.I love JavaScript and coding!
 `;
 console.log(intro);
 

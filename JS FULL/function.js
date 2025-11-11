@@ -1,252 +1,247 @@
-// ============================================================
-// 📘 JAVASCRIPT FUNCTION BASICS & ADVANCED CONCEPTS
-// ============================================================
+// ===============================================================
+// 📘 JAVASCRIPT FUNCTION CONCEPTS & PRACTICE NOTES
+// ===============================================================
 
-// ------------------------------------------------------------
-// 1️⃣ PARAMETERS and ARGUMENTS
-// ------------------------------------------------------------
+// ---------------------------------------------------------------
+// 1️⃣ PARAMETERS & ARGUMENTS
+// ---------------------------------------------------------------
+// Parameters → variables defined in function declaration.
+// Arguments → actual values passed when calling the function.
 
-// ➤ Parameters are variables defined inside the function definition.
-// ➤ Arguments are actual values you pass when calling the function.
-
-function abc(name, age, add) { // <-- parameters
+function abc(name, age, add) { // Parameters
     console.log(name, age, add);
 }
-abc("Vikas", 24, "Shankar Nagar"); // <-- arguments
-// Output: Vikas 24 Shankar Nagar
+abc("Vikas", 24, "Shankar Nagar"); // Arguments
 
-// ------------------------------------------------------------
-// 2️⃣ REST PARAMETERS
-// ------------------------------------------------------------
-
-// ➤ The rest parameter syntax (...d) allows a function to accept
-//    an indefinite number of arguments as an array.
+// ---------------------------------------------------------------
+// 2️⃣ REST PARAMETERS (...)
+// ---------------------------------------------------------------
+// Used when you want to accept unlimited arguments as an array.
 
 function abcd(a, b, c, ...d) {
-    console.log(a, b, c, d); // 'd' is an array of remaining arguments
-}
-abcd(1, 2, 3, 4, 5, 6, 7);
-// Output: 1 2 3 [4, 5, 6, 7]
-
-// ------------------------------------------------------------
-// 3️⃣ HOISTING
-// ------------------------------------------------------------
-
-// ➤ Hoisting is JavaScript’s behavior of moving declarations
-//    to the top of their scope before code execution.
-
-// Example 1: Variable hoisting with var
-console.log(a); // undefined (declared but not initialized)
-var a = 12;
-
-// Example 2: let and const are not hoisted the same way
-// console.log(s); // ❌ ReferenceError
-// let s = 12;
-
-// Example 3: Function hoisting
-abc1(); // Works, function declarations are hoisted
-function abc1() {
-    console.log("Hey from hoisted function!");
-}
-
-// Example 4: Function expression hoisting
-// abc2(); // ❌ Error, function expressions are NOT hoisted
-var abc2 = function() {
-    console.log("Hey from expression function!");
-};
-
-// ------------------------------------------------------------
-// 4️⃣ TYPES OF PARAMETERS
-// ------------------------------------------------------------
-
-// 1️⃣ Required parameters → Must be passed or they'll be undefined.
-function abcd1(a, b, c, d) {
     console.log(a, b, c, d);
 }
-abcd1(); // undefined undefined undefined undefined
+abcd(1, 2, 3, 4, 5, 6, 7);
 
-// 2️⃣ Destructured parameters → Extracts properties from an object.
+// ---------------------------------------------------------------
+// 3️⃣ HOISTING
+// ---------------------------------------------------------------
+// Hoisting moves declarations to the top of scope during compile phase.
+
+// Example 1: var is hoisted (undefined)
+console.log(a);
+var a = 12;
+
+// Example 2: let is not hoisted (gives error)
+// console.log(s);
+// let s = 12;
+
+// Example 3: Function declaration is hoisted
+abc1();
+function abc1() {
+    console.log("hey");
+}
+
+// Example 4: Function expression with var is NOT hoisted
+// abc2(); // ❌ Error
+var abc2 = function() {
+    console.log("hey");
+};
+
+// ---------------------------------------------------------------
+// 4️⃣ TYPES OF PARAMETERS IN JS
+// ---------------------------------------------------------------
+// [ Required, Destructured, Rest, Default ]
+
+// Required
+function abcd1(a, b, c, d) {
+    console.log(a, b, c, d); // if args missing → undefined
+}
+abcd1();
+
+// Destructured
 function ab({ name, age, add }) {
     console.log(name, age, add);
 }
 ab({ name: "Vikas", age: 22, add: "Old City" });
 
-// 3️⃣ Rest parameters → Gathers multiple arguments into an array.
+// Rest
 function abRest(...val) {
     console.log(val);
 }
 abRest(1, 2, 3, 4, 7, 6);
 
-// 4️⃣ Default parameters → Provides a fallback if a value isn’t passed.
+// Default
 function abDefault(a = 0, b = 0, c = 0, d = 0) {
     console.log(a, b, c, d);
 }
-abDefault(1, 2, 3); // Output: 1 2 3 0
+abDefault(1, 2, 3);
 
-// ------------------------------------------------------------
-// 5️⃣ TYPES OF ARGUMENTS
-// ------------------------------------------------------------
+// ---------------------------------------------------------------
+// 5️⃣ ARGUMENTS IN JS
+// ---------------------------------------------------------------
+// [ Positional, Default, Spread ]
 
-// 1️⃣ Positional Arguments → Order matters
-function pos(a, b = 4, c, d) {
+// Positional
+function posArg(a, b = 4, c, d) {
     console.log(a, b, c, d);
 }
-pos(1, 2, 3, 4); // Output: 1 2 3 4
+posArg(1, 2, 3, 4);
 
-// 2️⃣ Spread Arguments → Spread an array into individual values
-function spreadFn(a, b, c, d) {
+// Spread
+function spreadArg(a, b, c, d) {
     console.log(a, b, c, d);
 }
-let arrSpread = [1, 2, 3, 4];
-spreadFn(...arrSpread); // Output: 1 2 3 4
+let Array1 = [1, 2, 3, 4];
+spreadArg(...Array1);
 
-// ------------------------------------------------------------
-// 6️⃣ NESTED FUNCTIONS & SCOPE CHAIN
-// ------------------------------------------------------------
+// ---------------------------------------------------------------
+// 6️⃣ NESTED FUNCTION & SCOPE CHAIN
+// ---------------------------------------------------------------
 
-// ➤ Nested function: Function inside another function.
-function abcNested() {
-    function defg() {
-        console.log("Inner function called!");
+function outer() {
+    function inner() {
+        console.log("Inner function executed");
     }
-    defg();
+    inner();
 }
-abcNested();
 
-// ➤ Scope chain: Inner function can access outer function variables.
-let globalA = 12;
+let aGlobal = 12;
 function abScope() {
-    let localB = 12;
+    let b = 12;
     function cd() {
-        console.log(localB); // Accessing variable from parent scope
+        console.log(b); // inner can access outer variable (closure)
     }
     cd();
 }
 abScope();
 
-// ------------------------------------------------------------
-// 7️⃣ IIFE (Immediately Invoked Function Expression)
-// ------------------------------------------------------------
+// ---------------------------------------------------------------
+// 7️⃣ IMMEDIATELY INVOKED FUNCTION EXPRESSION (IIFE)
+// ---------------------------------------------------------------
+// Executes instantly after creation.
 
-// ➤ Runs automatically as soon as it’s defined.
-(function immediate() {
+(function name() {
     console.log("I am instantly invoked!");
 })();
 
-// ------------------------------------------------------------
-// 8️⃣ FUNCTION TYPES
-// ------------------------------------------------------------
+// ---------------------------------------------------------------
+// 8️⃣ MORE FUNCTION TYPES IN JS
+// ---------------------------------------------------------------
+// ['Arrow (Fat Arrow)', 'Anonymous', 'Higher Order', 'Callback',
+//  'First Class', 'Pure', 'Impure']
 
-// ➤ Arrow Function (Fat Arrow)
-let arrowFn = () => {
-    console.log("Arrow Function: Vikas Singh");
+// Arrow Function (Fat Arrow)
+let arrowFun = () => {
+    console.log("Vikas Singh");
 };
-arrowFn();
+arrowFun();
 
-// ➤ Anonymous Function (no name)
+// Anonymous Function → No name (often used as callback)
 setTimeout(function() {
-    console.log("Anonymous Function executed after 1 sec");
+    console.log("Anonymous function example");
 }, 1000);
 
-// ➤ Higher Order Function → Function that returns or accepts another function
+// Higher Order Function → returns another function or takes one as argument
 function higherOrder() {
-    return function inner() {
-        console.log("Inner function executed!");
+    return function innerFunc() {
+        console.log("Returned from higher order function");
     };
 }
 higherOrder()();
 
-// ➤ Callback Function → Function passed as an argument
-function execute(callback) {
+// Callback Function → passed as an argument to another function
+function greet(callback) {
+    console.log("Greeting...");
     callback();
 }
-execute(function b() {
+greet(function() {
     console.log("Callback executed!");
 });
 
-// ➤ First-Class Function → Functions can be assigned to variables or passed around
-function greet() {
-    return "Hello!";
+// First-Class Function → functions can be assigned, returned, or passed
+function firstClass(fn) {
+    fn();
 }
-let msg = greet;
-console.log(msg());
+firstClass(() => console.log("First class function example"));
 
-// ➤ Pure Function → Always returns the same output for same input
-function pureFn(val) {
+// Pure Function → same input gives same output, no side effects
+function pure(val) {
     return val + 2;
 }
-console.log(pureFn(12)); // 14
-console.log(pureFn(12)); // 14
+console.log(pure(12));
+console.log(pure(12));
 
-// ➤ Impure Function → Output can change even with same input
-function impureFn(val) {
-    return Math.random() + val;
+// Impure Function → same input, different output (uses external factor)
+function impure(val) {
+    console.log(Math.random() + val);
 }
-console.log(impureFn(12));
-console.log(impureFn(12));
+impure(12);
+impure(12);
 
-// ------------------------------------------------------------
+// ---------------------------------------------------------------
 // 9️⃣ SCOPING IN JAVASCRIPT
-// ------------------------------------------------------------
+// ---------------------------------------------------------------
+// Global Scope → accessible anywhere
+// Function Scope → accessible only inside function
 
-// ➤ Global Scope → Accessible everywhere
-// ➤ Function Scope → Accessible only inside function
-
-var globalVar = "I am global";
-
-function scopeTest() {
-    var localVar = "I am local";
-    console.log(globalVar); // accessible
-    console.log(localVar);  // accessible only inside
+let globalVar = "I am global";
+function scopeExample() {
+    let localVar = "I am local";
+    console.log(globalVar);
+    console.log(localVar);
 }
-scopeTest();
-// console.log(localVar); // ❌ Error
+scopeExample();
 
-// ------------------------------------------------------------
-// 🔟 CLOSURES
-// ------------------------------------------------------------
-
-// ➤ Closure = A function that remembers variables from its outer scope
+// ---------------------------------------------------------------
+// 🔟 CLOSURES & SCOPING RULES
+// ---------------------------------------------------------------
+// Closure = a function that remembers its outer scope variables
 function closureExample() {
     let a = 12;
-    return function() {
-        console.log(a); // remembers 'a' even after outer function ends
+    return function inner() {
+        console.log(a);
     };
 }
-let closureFn = closureExample();
-closureFn(); // Output: 12
+const result = closureExample();
+result(); // uses 'a' from outer function
 
-// ------------------------------------------------------------
-// 🔥 PRACTICE QUESTIONS 🔥
-// ------------------------------------------------------------
+// ---------------------------------------------------------------
+// 🔥 PRACTICE QUESTIONS
+// ---------------------------------------------------------------
 
-// 1️⃣ Print "Say Hello"
+// 1️⃣ Function sayHello()
 function sayHello() {
-    console.log("Say Hello");
+    console.log("Say hello");
 }
 sayHello();
 
-// 2️⃣ Function that adds two numbers
+// 2️⃣ Function add(a,b)
 function add(a, b) {
     return a + b;
 }
-console.log(add(11, 22)); // 33
+let ans = add(11, 22);
+console.log(ans);
 
 // 3️⃣ Function with default parameter
-function greetUser(name = "Guest") {
-    console.log(`Hi ${name}`);
+function create(guest = "Guest") {
+    console.log(`Hi ${guest}`);
 }
-greetUser("Vikas");
-greetUser(); // Hi Guest
+create("Vikas");
 
-// 4️⃣ Function that adds unlimited numbers using Rest + Reduce
+// 4️⃣ Rest parameter to add unlimited numbers
 function addUnlimited(...nums) {
-    let sum = nums.reduce((acc, val) => acc + val, 0);
-    console.log(sum);
+    let ans = nums.reduce((acc, val) => acc + val, 0);
+    console.log(ans);
 }
 addUnlimited(1, 2, 3, 4, 6, 7, 8, 9, 10);
 
-// 5️⃣ Nested function accessing variable from parent (Closure)
+// 5️⃣ IIFE Example
+(function createIIFE() {
+    console.log("I am instantly!");
+})();
+
+// 6️⃣ Nested function printing variable from outer one
 function parent() {
     let b = 11;
     function child() {
@@ -256,29 +251,29 @@ function parent() {
 }
 parent();
 
-// 6️⃣ Array operations (push + unshift)
-let fruits = ["Apple", "Guava", "Grapes", "Mango", "Banana"];
-fruits.push("Pear");      // Add at end
-fruits.unshift("Orange"); // Add at start
-console.log(fruits);
+// 7️⃣ Array operations (add & remove)
+let arrFruits = ["apple", "guava", "grapes", "mango", "banana"];
+arrFruits.push("pear");
+arrFruits.unshift("orange");
+console.log(arrFruits);
 
-// 7️⃣ Loop through array (forEach)
-let arr = [1, 2, 3, 4, 5, 6];
-arr.forEach(function(element) {
+// 8️⃣ Print all array elements
+let arrNums = [1, 2, 3, 4, 5, 6];
+arrNums.forEach(element => {
     console.log(element);
 });
 
-// 8️⃣ Object iteration (for...in)
+// 9️⃣ Object iteration
 let person = {
     name: "Vikas",
     age: 22,
     city: "Jalna"
 };
 for (let key in person) {
-    console.log(`${key}: ${person[key]}`);
+    console.log(person[key]);
 }
 
-// 9️⃣ setTimeout() Example
+// 🔟 setTimeout example
 setTimeout(() => {
-    console.log("Time up! (after 2 seconds)");
+    console.log("Time up!");
 }, 2000);
