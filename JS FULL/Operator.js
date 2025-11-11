@@ -1,72 +1,152 @@
+// ============================================================================
+// 🌟 1️⃣ Comparison Operators
+// ============================================================================
 
+// These are used to compare two values.
 
-// 1} Comparison Operators
-//  == , === , != , !== , > , < , >=,  <=
+console.log("== vs === examples:");
+console.log(12 == "12");   // true → compares only VALUE (not type)
+console.log(12 === "12");  // false → compares VALUE + TYPE (strict comparison)
 
-// ==   not strict compare never use This
-// ===  strict compare ALWAYS use this👍
+console.log("!= vs !== examples:");
+console.log(12 != "12");   // false → compares only VALUE (not type)
+console.log(12 !== "12");  // true  → strict not equal (checks type too)
 
-//  !=   never use  this eg :- 12 != '12' -->ans flase but it s true
-//  !==  always use  this  eg:- 12 !=='12' --> ans is true
+// ✅ Use === and !== always for accurate comparisons.
 
-// -----------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// 🌟 2️⃣ Logical Operators
+// ---------------------------------------------------------------------------
+// Used to combine multiple conditions (mostly inside if statements).
 
-// 2} logical Operators
-//  && ,  || , !=
+let username = "vikas";
+let password = "12345";
 
-// && --> T && T =T
-// || --> f||f = f only ,--> not t||f = f
-// != --> T = F and F =T
+// AND (&&): Both conditions must be true
+if (username === "vikas" && password === "12345") {
+  console.log("✅ Login successful");
+} else {
+  console.log("❌ Invalid credentials");
+}
 
-//  eg  username === exist && password === userpassword.
+// OR (||): At least one condition must be true
+let hasEmail = false;
+let hasPhone = true;
 
+if (hasEmail || hasPhone) {
+  console.log("You can receive OTP ✅");
+} else {
+  console.log("Cannot send OTP ❌");
+}
 
-// ---------------------------------------------------------------
+// NOT (!): Reverses the boolean value
+let isLoggedIn = false;
+console.log(!isLoggedIn);  // true (negation)
 
-// 3} Teranary Operator
-//  ?  : ---> it is lke if else
-//  condtions ? dothis : dothan
+// ---------------------------------------------------------------------------
+// 🌟 3️⃣ Ternary Operator (? :)
+// ---------------------------------------------------------------------------
+// Shortcut for if-else statements. Syntax:
+// condition ? expression_if_true : expression_if_false
 
-//   12>13 ? console.log("not is greater no ") : console.log("it is greater");
+let num = 15;
+num > 10 ? console.log("✅ Greater than 10") : console.log("❌ Not greater than 10");
 
-// ----------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// 🌟 4️⃣ Type Checking Operators
+// ---------------------------------------------------------------------------
+// typeof → checks data type of a value
+// instanceof → checks if an object is an instance of a specific class/type
 
-// 4} Type Checking Operators
-// typeof
-// instance of
-// kuchh bhi banaaoge wo top pe likhi gayi cheejo se aata hai
+let x = 123;
+let str = "Hello";
+let arr = [1, 2, 3];
+let date = new Date();
 
-// ----------------------------------------------------------------------
+console.log(typeof x);       // number
+console.log(typeof str);     // string
+console.log(typeof arr);     // object (arrays are objects in JS)
+console.log(date instanceof Date);  // true
+console.log(arr instanceof Array);  // true
 
-// 5} string operators
-//  + --> are you to add the string (+ for concatrnations)
+// ---------------------------------------------------------------------------
+// 🌟 5️⃣ String Operators
+// ---------------------------------------------------------------------------
+// The '+' operator concatenates (joins) strings
 
-//   "vikas"+"singh"
+let firstName = "Vikas";
+let lastName = "Singh";
+let fullName = firstName + " " + lastName;
 
-// -----------------------------------------------------------------------------------
+console.log("Full Name:", fullName); // Vikas Singh
 
-// 6} Spread --> array nd object main  / Read Operator  --> functions main
+// Template literals (using backticks ``)
+let age = 23;
+console.log(`My name is ${fullName} and I am ${age} years old.`);
 
-// ...(very important in modern js )
-//   let arr=[1,2,3,4];
-//   let  arr1= [...arr];   ---> o/p -> 1234
+// ---------------------------------------------------------------------------
+// 🌟 6️⃣ Spread and Rest Operators (...)
+// ---------------------------------------------------------------------------
+// Spread → expands an array/object into individual elements
+// Rest → collects multiple arguments into an array
 
-// rest --> for functions
-// function abc(a,b,c,...rest){}
-// abc(1,2,3,4,5)
+// ✅ Spread Example:
+let numbers = [1, 2, 3];
+let newNumbers = [...numbers, 4, 5];  // spreads numbers into new array
+console.log(newNumbers);  // [1, 2, 3, 4, 5]
 
-// -----------------------------------------------------------------------------------
+// ✅ Rest Example:
+function showNumbers(a, b, ...rest) {
+  console.log("a:", a);
+  console.log("b:", b);
+  console.log("rest:", rest); // collects remaining arguments
+}
+showNumbers(10, 20, 30, 40, 50);
 
-// 7}  Nullish Coalescing Operator
-//  ?? (fallback only when null / undefined)
+// ---------------------------------------------------------------------------
+// 🌟 7️⃣ Nullish Coalescing Operator (??)
+// ---------------------------------------------------------------------------
+// Returns the right-hand value ONLY when the left-hand value is null or undefined.
+// Useful for providing default values.
 
-//  user ?
+let userInput = null;
+let finalValue = userInput ?? "Default Value"; 
+console.log(finalValue); // Output: "Default Value"
 
-// ---------------------------------------------------------------
+let score = 0;
+console.log(score ?? 100); // 0 (since 0 is NOT null/undefined)
 
+// ---------------------------------------------------------------------------
+// 🌟 8️⃣ Optional Chaining (?.)
+// ---------------------------------------------------------------------------
+// Prevents errors when accessing deeply nested object properties that may not exist.
 
-// Optional Chaining
-//  ?.(safe access to nested values)
+let user = {
+  name: "Vikas",
+  address: {
+    city: "Pune",
+    pincode: 410507
+  }
+};
 
-// -----------------------------------------------------------
+// Safe way to access nested property
+console.log(user?.address?.city);      // Pune
+console.log(user?.address?.street);    // undefined (no error!)
+
+// Without optional chaining, it would throw an error if address or street didn't exist.
+
+// ---------------------------------------------------------------------------
+// ✅ SUMMARY
+// ---------------------------------------------------------------------------
+//
+// 1️⃣ Comparison → ==, ===, !=, !==, >, <, >=, <=
+// 2️⃣ Logical → &&, ||, !
+// 3️⃣ Ternary → condition ? truePart : falsePart
+// 4️⃣ Type Checking → typeof, instanceof
+// 5️⃣ String → concatenation (+), template literals (``)
+// 6️⃣ Spread / Rest → ... operator
+// 7️⃣ Nullish Coalescing → ?? 
+// 8️⃣ Optional Chaining → ?.
+//
+
 
