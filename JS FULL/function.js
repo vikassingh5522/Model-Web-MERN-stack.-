@@ -44,7 +44,7 @@ function abc1() {
 
 // Example 4: Function expression with var is NOT hoisted
 // abc2(); // ❌ Error
-var abc2 = function() {
+var abc2 = function () {
     console.log("hey");
 };
 
@@ -138,7 +138,7 @@ let arrowFun = () => {
 arrowFun();
 
 // Anonymous Function → No name (often used as callback)
-setTimeout(function() {
+setTimeout(function () {
     console.log("Anonymous function example");
 }, 1000);
 
@@ -155,7 +155,7 @@ function greet(callback) {
     console.log("Greeting...");
     callback();
 }
-greet(function() {
+greet(function () {
     console.log("Callback executed!");
 });
 
@@ -297,12 +297,12 @@ runTwice(sayHello);
 //2. Create one pure function that always returns the
 // same output for a given input, and one impure function using a global variable
 
-let a=12
- function pure(val) {
-    console.log(val+1);
- }
- pure(12)
-  pure(12)
+let a = 12
+function pure(val) {
+    console.log(val + 1);
+}
+pure(12)
+pure(12)
 
 // OR
 
@@ -317,14 +317,14 @@ console.log(pure1(12));
 // 3} Write a function that uses object destructuring
 // inside parameters to extract and print `name` and`age`
 
- function user({name , age , city}) {
+function user({ name, age, city }) {
     console.log(`name : ${name} , age  : ${age} ,city : ${city}`)
- }
- user({
-    name:"vikas",
-    age:14,
-    city:"Pune",
- });
+}
+user({
+    name: "vikas",
+    age: 14,
+    city: "Pune",
+});
 
 // 4} Demonstrate the difference between normal
 // function and arrow function when used as object  methods (the `this` issue).
@@ -342,12 +342,12 @@ person1.showInfo();
 
 // 2} Arrow Function Method
 
- const person2 = {
-  name: "Vikas",
-  age: 22,
-  showInfo: () => {
-    console.log("Arrow Function ->", this.name, this.age);
-  },
+const person2 = {
+    name: "Vikas",
+    age: 22,
+    showInfo: () => {
+        console.log("Arrow Function ->", this.name, this.age);
+    },
 };
 person2.showInfo(); // ⚠️ Output: Arrow Function -> undefined undefined
 // Arrow functions 👍 don’t have their own (this).
@@ -357,13 +357,13 @@ person2.showInfo(); // ⚠️ Output: Arrow Function -> undefined undefined
 
 // 3 Mixed Example
 const person4 = {
-  name: "Vikas",
-  normalFn: function () {
-    console.log("Normal:", this.name);
-  },
-  arrowFn: () => {
-    console.log("Arrow:", this.name);
-  },
+    name: "Vikas",
+    normalFn: function () {
+        console.log("Normal:", this.name);
+    },
+    arrowFn: () => {
+        console.log("Arrow:", this.name);
+    },
 };
 person4.normalFn(); // ✅ Normal: Vikas
 person4.arrowFn();  // ⚠️ Arrow: undefined
@@ -401,38 +401,58 @@ let total = salary.reduce(function (acc, val) {
 console.log("Total Salary:", total);
 
 
-// 8. Create an array of names and use `some()` and
+//8. Create an array of names and use some() and // every() to test a condition (e.g., all names longer than // 3 chars).
 
 let names = ["Vikas", "Raj", "Anu", "Rohan"];
 
-let allLong = names.every(function (name) {
-    return name.length > 3;
-});
-
-let someLong = names.some(function (name) {
-    return name.length > 3;
-});
-
-console.log("All names > 3 chars:", allLong);
-console.log("Some names > 3 chars:", someLong);
+let allLong = names.every(function (names) {
+    return names.length > 3;
+})
+console.log("All names > 3 chars", allLong);
 
 // or
 
-// let names = ["Vikas", "Raj", "Anu", "Rohan"];
+let someLong = names.some(function (names) {
+    return names.length > 3;
 
-// let allLong = names.every(name => name.length > 3);
-// let someLong = names.some(name => name.length > 3);
-
-// console.log("All names > 3 chars:", allLong);
-// console.log("Some names > 3 chars:", someLong);
+})
+console.log("some names > 3", someLong);
 
 
 
-// `every()` to test a condition (e.g., all names longer than 3 chars).
 
 // 9. Create an object `user` and test the behavior of 
 // `Object.freeze()` and `Object.seal()` by adding/changing keys.
 
 
+let user = { name: "Vikas", age: 24 };
+
+// ❄️ Freeze — cannot add, delete, or modify
+Object.freeze(user);
+user.age = 30;       // ❌ ignored
+user.city = "Pune";  // ❌ ignored
+console.log("After freeze:", user);
+
+// 🔒 Seal — can modify existing, but not add or delete
+let student = { name: "Raj", age: 22 };
+Object.seal(student);
+student.age = 25;    // ✅ allowed
+student.city = "Mumbai"; // ❌ ignored
+console.log("After seal:", student);
+
+
 // 10. Create a nested object (`user → address → city`) 
 // and access the city name inside it.
+
+
+let user = {
+    name: "vikas",
+    address: {
+        city: "pune",
+        pincod: 123,
+    }
+};
+console.log("city :", user.address.city);
+console.log("pincod :", user.address.pincod);
+
+
