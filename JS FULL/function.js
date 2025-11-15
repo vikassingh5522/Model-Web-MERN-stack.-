@@ -284,9 +284,9 @@ setTimeout(() => {
 // 1. Write a higher-order function `runTwice(fn)` that 
 // takes another function and executes it two times
 
-function runTwice(a) {
-    a();
-    a();
+function runTwice(fn) {
+    fn();
+    fn();
 }
 function sayHello() {
     console.log("Hello vikas");
