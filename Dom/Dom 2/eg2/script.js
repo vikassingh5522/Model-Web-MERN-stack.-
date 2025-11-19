@@ -36,12 +36,12 @@ var btn = document.querySelector('button')
 var h1 = document.querySelector('h1')
 var main = document.querySelector('main')
 
-btn.addEventListener('click',function(){
+btn.addEventListener('click', function () {
 
-    var winner = arr[Math.floor(Math.random()*arr.length)]
+    var winner = arr[Math.floor(Math.random() * arr.length)]
 
     h1.innerHTML = winner.team
     h1.style.backgroundColor = winner.secondary
     main.style.backgroundColor = winner.primary
-    
+
 })

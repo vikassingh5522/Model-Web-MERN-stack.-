@@ -2,6 +2,8 @@
 
 // Dom -> Document Object Model manipulation utilities
 
+const { createElement } = require("react")
+
 // DOM 4 pillar methods
 // 1 - Selection of an element
 // 2 Changing css styles
@@ -61,3 +63,13 @@
 // Creating elements
 // document.createElement("tagName")
 // Example: let div = document.createElement("div");
+
+
+
+
+// createElement --> for ceate the element  in js 
+ 
+// appendChild ---> 
+
+// setTimeout  --->  Runs one time only after a delay., t async   --> Delayed action 
+// setInterval  ---> Runs a function repeatedly, like a loop., async --> Loops, timers, animations 
