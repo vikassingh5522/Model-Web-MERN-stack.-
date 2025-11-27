@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+
+}
+
+main {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-image: url(https://plus.unsplash.com/premium_photo-1763482110336-afe8d4ac0bac?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+}
+
+:root {
+    /* class variable  we create the variable */
+    /* --red: rgb(45, 165, 69); */
+    --x: 400px;
+    --y: 400px;
+}
+
+.box {
+    height: 100%;
+    width: 100%;
+    border: 1px solid rgb(240, 233, 233);
+
+    /* background: linear-gradient(in oklab to left, red, blue,purple); */
+
+    background: radial-gradient(180px at var(--x) var(--y), rgba(200, 186, 186, 0.092), rgba(0, 0, 15, 0.902));
+
+
+
+
+    /* class variable  we create the variable */
+    /* background-color: var(--red); */
+
+}
