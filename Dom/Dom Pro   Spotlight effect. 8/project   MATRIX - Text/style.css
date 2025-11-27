@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    color: #0ac107;
+    font-size: 50px;
+    text-align: center;
+    font-weight: 600;
+    padding: 20px;
+    margin-bottom: 20px;
+    
+}
+
+
+p {
+    color: #0ac107;
+    font-size: 40px;
+    font-weight: 500;
+    margin: 30px 0;
+    /* adds equal spacing between paragraphs */
+}
