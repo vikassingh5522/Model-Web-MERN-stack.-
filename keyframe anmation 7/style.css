@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: black
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* 
+    Discrete property in css
+    
+  display : none;
+  display : block;
+    display : inline-block;
+    display : flex;
+    display : grid;
+    display : inline- flex;
+    display : inline-grid;
+    display : inline;
+    display : contents;
+*/
+@keyframes backgroundcolorchange {
+    /* From where to where we want to go? Like background red color changes to white color--->Put the value in from. And end with to. */
+
+    form {
+        background-color: red;
+        border-radius: 10px;
+        transform: translateX(0px) scale(02);
+
+    }
+
+    to {
+        background-color: rgb(117, 117, 34);
+        border-radius: 50px;
+        transform: translateX(100px) scale(0.6);
+    }
+}
+
+.box {
+    width: 400px;
+    height: 300px;
+    border: 1.7px solid rgb(245, 9, 9);
+    border-radius: 20px;
+
+    animation: backgroundcolorchange 2s infinite alternate;
+    /* animation: backgroundcolorchange 2s forwards alternate; */
+
+    /* display: none; --> we not animation will not work. */
+}
