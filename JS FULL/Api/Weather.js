@@ -28,5 +28,4 @@ async function getWeatherApi(city) {
 
 
 
-
-export default whetherApi;
+export { getWeatherApi };
