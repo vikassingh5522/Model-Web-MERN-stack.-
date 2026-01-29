@@ -1,0 +1,7 @@
+
+CLUSTER  => STORAGE + PROCESSOR
+DATABASES
+
+CLOUD ->  Mongodb  Atlas  free 512 mb 
+
+CLUSTER --> we can create the many DATABASES. 
