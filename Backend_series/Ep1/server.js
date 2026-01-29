@@ -1,63 +1,23 @@
-const express = require("express");
-const app = express();
+require('dotenv').config(); // MUST be at the top
 
-// middleware to read JSON data
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const app = require('./src/app');
+const mongoose = require('mongoose');
 
-// GET route
-app.get("/", (req, res) => {
-  res.send("Home Page");
-});
+function connectDB() {
+  mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => {
+      console.log('Database connected successfully');
+    })
+    .catch((err) => {
+      console.log('Error connecting to database:', err);
+    });
+}
 
-// GET with params : --> this id is dynamic changeable
-app.get("/user/:id", (req, res) => {
-  res.send(`User ID is ${req.params.id}`);
-});
+connectDB();
 
-// GET with query
-app.get("/search", (req, res) => {
-  res.json({
-    keyword: req.query.keyword,
-    page: req.query.page,
-  });
-});
+const PORT = process.env.PORT || 3000;
 
-// POST route (receive data)
-app.post("/user", (req, res) => {
-  res.json({
-    message: "User created",
-    data: req.body,
-  });
-});
-
-// PUT route (update full data)
-app.put("/user/:id", (req, res) => {
-  res.json({
-    message: "User fully updated",
-    userId: req.params.id,
-    updatedData: req.body,
-  });
-});
-
-// PATCH route (partial update)
-app.patch("/user/:id", (req, res) => {
-  res.json({
-    message: "User partially updated",
-    userId: req.params.id,
-    updatedFields: req.body,
-  });
-});
-
-// DELETE route
-app.delete("/user/:id", (req, res) => {
-  res.json({
-    message: "User deleted",
-    userId: req.params.id,
-  });
-});
-
-// server
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
